@@ -6,4 +6,9 @@
     <StartupObject>PianoFerieBuilder.Program</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="EPPlus" Version="5.4.2" />
+  </ItemGroup>
+
 </Project>
