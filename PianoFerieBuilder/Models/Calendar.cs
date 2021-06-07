@@ -30,11 +30,11 @@ namespace PianoFerieBuilder.Models
             }
         }
 
-        public int WorkingDays
+        public int PayeableDays
         {
             get
             {
-                return Days.Where(v => !v.IsWeekend && !v.IsHoliday).Count();
+                return Days.Where(v => (!v.IsWeekend && !v.IsHoliday) || (v.IsWeekend && v.IsHoliday)).Count();
             }
         }
 
