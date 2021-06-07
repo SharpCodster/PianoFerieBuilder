@@ -1,5 +1,6 @@
 ﻿using PianoFerieBuilder.Helpers;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace PianoFerieBuilder.Models
@@ -26,6 +27,14 @@ namespace PianoFerieBuilder.Models
                 Days.Add(entity);
 
                 currentDate = currentDate.AddDays(1.0);
+            }
+        }
+
+        public int WorkingDays
+        {
+            get
+            {
+                return Days.Where(v => !v.IsWeekend && !v.IsHoliday).Count();
             }
         }
 
