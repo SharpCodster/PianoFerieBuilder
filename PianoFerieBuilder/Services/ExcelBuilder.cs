@@ -11,11 +11,12 @@ namespace PianoFerieBuilder.Services
     class ExcelBuilder
     {
         private static int HEADER = 1;
-        private static string WORKSHEET_NAME = "Calendar";
-        private static string TABLE_NAME = "Calendar";
 
-        public int CreateFile(string path, List<CalendarDay> calendar)
+        public int CreateFile(string path, string year, List<CalendarDay> calendar)
         {
+            string workSheetName = $"Calendar {year}";
+            string tableName = $"Calendar{year}";
+
             FileInfo fi = new FileInfo(path);
 
             if (!string.Equals(fi.Extension, ".xlsx", StringComparison.OrdinalIgnoreCase))
@@ -29,19 +30,19 @@ namespace PianoFerieBuilder.Services
 
                 int toalRosw = calendar.Count + HEADER;
 
-                ExcelWorksheet workSheet = workBook.Worksheets.FirstOrDefault(v => v.Name == WORKSHEET_NAME);
+                ExcelWorksheet workSheet = workBook.Worksheets.FirstOrDefault(v => v.Name == workSheetName);
 
                 if (workSheet == null)
                 {
-                    workSheet = workBook.Worksheets.Add(WORKSHEET_NAME);
+                    workSheet = workBook.Worksheets.Add(workSheetName);
                 }
 
-                ExcelTable newTable = workSheet.Tables.FirstOrDefault(v => v.Name == TABLE_NAME);
+                ExcelTable newTable = workSheet.Tables.FirstOrDefault(v => v.Name == tableName);
 
                 if (newTable == null)
                 {
                     string letter = ExcelCellBase.GetAddressCol(8);
-                    newTable = workSheet.Tables.Add(new ExcelAddressBase($"A1:{letter}{toalRosw}"), TABLE_NAME);
+                    newTable = workSheet.Tables.Add(new ExcelAddressBase($"A1:{letter}{toalRosw}"), tableName);
                 }
 
                 PopulateWorksheet(workSheet, newTable, calendar);

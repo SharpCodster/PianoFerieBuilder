@@ -2,7 +2,7 @@
   "profiles": {
     "PianoFerieBuilder": {
       "commandName": "Project",
-      "commandLineArgs": "-y 2021 -o \"D:\\CloudStorages\\OneDrive - TEOREMA ENGINEERING SRL\\Desktop\\Ferie.xlsx\""
+      "commandLineArgs": "-y 2025 -o \"C:\\Users\\mfusi\\OneDrive\\Desktop\\Piano Ferie.xlsx\""
     }
   }
 }

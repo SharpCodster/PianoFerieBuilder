@@ -36,7 +36,7 @@ namespace PianoFerieBuilder
             Calendar cal = new Calendar(opts.Year);
 
             ExcelBuilder builder = new ExcelBuilder();
-            result = builder.CreateFile(opts.ExcelFileOutPath, cal.Days);
+            result = builder.CreateFile(opts.ExcelFileOutPath, opts.Year, cal.Days);
 
             Console.WriteLine($"Exit code {result}");
             return result;
